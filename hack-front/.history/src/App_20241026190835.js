@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
 
-const List = () => {
+function App() {
   const [data, setData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -48,6 +48,7 @@ const renderHomePage = () => (
   </div>
 );
 
+// ... 后面的代码保持不变 ...
   const renderCategoryPage = () => (
     <div className="category-page">
       <h1>{selectedCategory}</h1>
@@ -73,10 +74,6 @@ const renderHomePage = () => (
       {selectedCategory ? renderCategoryPage() : renderHomePage()}
     </div>
   );
-};
-
-function App() {
-  return <List />;
 }
 
 export default App;

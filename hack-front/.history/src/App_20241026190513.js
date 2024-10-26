@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
 
-const List = () => {
+function App() {
   const [data, setData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -21,32 +21,23 @@ const List = () => {
 
   const categories = ["分类1", "分类2", "分类3", "分类4", "分类5"];
 
-  // ... 前面的代码保持不变 ...
-
-const renderHomePage = () => (
-  <div className="home-page">
-    <h1>信息分类展示</h1>
-    <div className="category-grid">
-      {categories.map((category, index) => (
-        <div
-          key={category}
-          className="category-card"
-          onClick={() => setSelectedCategory(category)}
-          style={{
-            background: `linear-gradient(135deg, #1e3a8a ${index * 5}%, #1e40af ${100 - index * 5}%)`
-          }}
-        >
-          <h2>{category}</h2>
-          <ul>
-            {data.filter(item => item.category === category).slice(0, 3).map(item => (
-              <li key={item.id}>{item.title}</li>
-            ))}
-          </ul>
-        </div>
-      ))}
+  const renderHomePage = () => (
+    <div className="home-page">
+      <h1>信息分类展示</h1>
+      <div className="category-grid">
+        {categories.map(category => (
+          <div key={category} className="category-card" onClick={() => setSelectedCategory(category)}>
+            <h2>{category}</h2>
+            <ul>
+              {data.filter(item => item.category === category).slice(0, 3).map(item => (
+                <li key={item.id}>{item.title}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
 
   const renderCategoryPage = () => (
     <div className="category-page">
@@ -73,10 +64,6 @@ const renderHomePage = () => (
       {selectedCategory ? renderCategoryPage() : renderHomePage()}
     </div>
   );
-};
-
-function App() {
-  return <List />;
 }
 
 export default App;
