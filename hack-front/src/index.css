@@ -13,9 +13,11 @@
 :root {
     --primary-dark: #3d52a0;
     --light-blue: #7091e6;
+    --dark-mix-04: rgba(134, 151, 196, 0.4);
     --dark-mix: #8697c4;
     --primary-light: #ede8f5; 
     --secondary-light: #adbbda; 
+    --black: #000000;
 }
 
 @layer base {
@@ -41,5 +43,13 @@
 
     h2 {
         @apply font-serif font-bold text-5xl text-[var(--primary-dark)]
+    }
+
+    .link_text {
+        @apply font-serif font-bold text-2xl text-[var(--primary-dark)]
+    } 
+
+    text {
+        @apply font-serif text-xl text-[var(--black)]
     }
 }
