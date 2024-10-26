@@ -3,6 +3,7 @@ import Calendar from '@toast-ui/react-calendar';
 import '@toast-ui/calendar/dist/toastui-calendar.min.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import CalendarPage from './CalendarPage';
+import CategoryList from './CategoryList';
 import InputButton from './InputButton';
 
 function App() {
@@ -47,12 +48,17 @@ function App() {
             </div>
             <li>
               <Link to="/" className="link_text">
-                Home
+                主页
               </Link>
             </li>
             <li>
               <Link to="/calendar" className="link_text">
                 日历
+              </Link>
+            </li>
+            <li>
+              <Link to="/category" className="link_text">
+                消息分类
               </Link>
             </li>
           </ul>
@@ -87,6 +93,7 @@ function App() {
             }
           />
           <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/category" element={<CategoryList />} />
         </Routes>
       </div>
     </Router>
