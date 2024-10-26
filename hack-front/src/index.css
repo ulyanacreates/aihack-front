@@ -38,4 +38,8 @@
     h1 {
         @apply font-sans font-bold text-3xl text-[var(--primary-dark)]
     }
+
+    h2 {
+        @apply font-serif font-bold text-5xl text-[var(--primary-dark)]
+    }
 }
