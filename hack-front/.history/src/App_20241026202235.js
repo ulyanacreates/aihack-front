@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import CategoryList from './CategoryList';
-import './App.css';  // 这行应该没问题了
+import './App.css';
 
 function Home() {
   return (
