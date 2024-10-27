@@ -115,7 +115,7 @@ const CategoryList = () => {
                 </div>
               ))}
           </div>
-          <Link to={`/category/${encodeURIComponent(category.key)}`} className="view-more">
+          <Link to={`/category/${category.key}`} className="view-more">
             查看更多
           </Link>
         </div>
