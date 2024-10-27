@@ -1,13 +1,43 @@
 // InputButton.js
-import React from 'react';
+import React, {useState } from 'react';
+import RecsList from './RecsList';
+import { useNavigate } from 'react-router-dom';
 
 function InputButton() {
+  const [inputValue, setInputValue] = useState(''); // State for input value
+  const navigate = useNavigate(); // Initialize the navigate function
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    try {
+      // Send input data to the backend
+      const response = await fetch(`http://192.168.10.71:5000/articles/post`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: inputValue }), // Send the input value
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const result = await response.json(); // Parse the JSON response
+
+      // Navigate to another page based on the response
+      navigate('/another-page', { state: { result } }); // Pass the result if needed
+    } catch (error) {
+      console.error('Error submitting data:', error);
+    }
+  };
+
   return (
-    <div className="relative mt-6">
+    <div className="relative mt-2">
+      <form onSubmit={handleSubmit}>
       <input
-        type="email"
-        placeholder="亲爱的用户想多了解什么呀~"
-        autoComplete="email"
+        placeholder="用户想多了解什么呀~"
         aria-label="Email address"
         className="block w-full rounded py-4 pl-6 pr-20 text-base/6 ring-4 ring-transparent transition placeholder:text-black focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5"
         style={{ 
@@ -37,7 +67,9 @@ function InputButton() {
           </svg>
         </button>
       </div>
+      </form>
     </div>
+    
   );
 }
 

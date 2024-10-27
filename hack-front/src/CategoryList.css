@@ -44,23 +44,138 @@
 .category-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-rows: repeat(2, auto);
+  gap: 30px 20px; /* 增加行间距 */
+  padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .category-card {
-  background-color: #1e3a8a;
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  height: 280px;
+  position: relative; /* 添加相对定位 */
+  padding-top: 40px; /* 为标题腾出空间 */
 }
 
-.category-card:hover {
-  transform: scale(1.05);
+.category-title {
+  position: absolute; /* 绝对定位 */
+  top: 10px; /* 距离顶部的距离 */
+  left: 15px; /* 距离左侧的距离 */
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+  background: none; /* 移除背景 */
+  z-index: 1; /* 确保标题在最上层 */
+}
+
+.info-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px 15px;
+  background-color: transparent; /* 移除半透明背景 */
+}
+
+.list-info-card {
+  background-color: rgba(255, 255, 255, 0.6); /* 增加透明度 */
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.list-info-title {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.3;
+  font-size: 0.9em;
+  text-align: left; /* 左对齐 */
+}
+
+.list-info-title:hover {
+  text-decoration: underline;
+}
+
+.info-subtags-date {
+  font-size: 0.75em;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+}
+
+.view-more {
+  display: block;
+  text-align: center;
+  padding: 8px;
+  background-color: transparent;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 0.9em;
+  border-top: 1px solid #e0e0e0;
+}
+
+.view-more:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* 保持不同类别的背景色 */
+.category-electronic { background-color: rgba(255, 249, 196, 0.5); }
+.category-job { background-color: rgba(200, 230, 201, 0.5); }
+.category-research { background-color: rgba(255, 224, 178, 0.5); }
+.category-news { background-color: rgba(225, 190, 231, 0.5); }
+.category-family { background-color: rgba(245, 245, 245, 0.5); }
+.category-all { background-color: rgba(187, 222, 251, 0.7); }
+
+.home-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.home-button {
+  background-color: #2196F3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+  background-color: #1976D2;
+}
+
+.info-subtags {
+  font-size: 0.9rem;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.info-date {
+  font-size: 0.9rem;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
 }
 
 .category-card h2 {
@@ -74,4 +189,17 @@
 
 .category-card li {
   margin-bottom: 5px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
 }
