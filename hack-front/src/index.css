@@ -57,4 +57,12 @@
     wtext {
         @apply font-serif text-xl text-white
     }
+
+    labeltext {
+        @apply font-serif text-2xl text-[var(--light-blue)]
+    }
+
+    h3 {
+        @apply font-sans font-bold text-[var(--primary-dark)]
+    }
 }
