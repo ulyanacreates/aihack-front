@@ -1,10 +1,12 @@
 // RecsList.js
 import React, { useEffect, useState, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import InputButton from './InputButton';
 
 const ITEMS_PER_LOAD = 3; // Number of items to load each time
 
 function RecsList() {
+    const location = useLocation(); // Use location to access the navigation state
     const [recs, setRecs] = useState([]); // State to store fetched data
     // const [error, setError] = useState(null); // State for error handling
     const [displayedRecs, setDisplayedRecs] = useState([]); // State to store displayed data
@@ -39,8 +41,22 @@ function RecsList() {
                 console.error('Error fetching data:', error);
             }
           };
-          fetchData();
-        }, []);
+          // Check if there's state passed from InputButton
+        if (location.state && location.state.result) {
+            const result = location.state.result;
+            console.log('Received result:', result);
+            if (result.articles && Array.isArray(result.articles)) {
+                setRecs(result.articles);
+                setIsUserNew(result.isUserNew || false);
+                setDisplayedRecs(result.articles.slice(0, ITEMS_PER_LOAD));
+            } else {
+                console.error('Received result is not in the expected format:', result);
+                fetchData(); // Fallback to fetching data if result is not valid
+            }
+        } else {
+            fetchData(); // Fetch data if no state is passed
+        }
+        }, [location.state]);
 
     const loadMoreItems = useCallback(() => {
         if (!recs || displayedRecs.length >= recs.length) {
@@ -72,18 +88,18 @@ function RecsList() {
   }, [loadMoreItems]);
   return (
     <div>
-    <div className="flex items-start justify-start h-screen p-6">
+    <div className="flex items-start justify-start h-screen p-6 pl-36">
         <div className='items-start justify-start hscreen'>
-        <h2 className="h2 pt-16 pl-36 pb-2">
+        <h2 className="h2 pt-16 pb-2 pl-4">
             {isUserNew ? "产品介绍" : "今日总结"} 
         </h2>
-            <text className='text pt-20 pl-36'>
+            <text className='text pt-20 pl-4'>
                 {isUserNew ? "不怕拖延症，稍后再看也不忘" : "简单描述今天的总结"}
             </text>
-            <div className='pl-36 max-w-xl'>
+            <div className='pl-4 max-w-xl'>
                 <InputButton />
             </div>
-            <div className="category-grid pt-4 pl-36 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="category-grid pt-4 grid grid-cols-1 md:grid-cols-3 gap-8">
               
                 {displayedRecs.map((item) => (
                     <ul>

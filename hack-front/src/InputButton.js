@@ -12,12 +12,12 @@ function InputButton() {
 
     try {
       // Send input data to the backend
-      const response = await fetch(`http://192.168.10.71:5000/articles/post`, {
+      console.log(inputValue)
+      const response = await fetch(`http://192.168.10.71:5000/articles/${inputValue}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ query: inputValue }), // Send the input value
       });
 
       if (!response.ok) {
@@ -27,7 +27,7 @@ function InputButton() {
       const result = await response.json(); // Parse the JSON response
 
       // Navigate to another page based on the response
-      navigate('/another-page', { state: { result } }); // Pass the result if needed
+      navigate('/recslist', { state: { result } }); // Pass the result if needed
     } catch (error) {
       console.error('Error submitting data:', error);
     }
@@ -37,6 +37,8 @@ function InputButton() {
     <div className="relative mt-2">
       <form onSubmit={handleSubmit}>
       <input
+        value={inputValue} // Set the input value to the state
+        onChange={(e) => setInputValue(e.target.value)}
         placeholder="用户想多了解什么呀~"
         aria-label="Email address"
         className="block w-full rounded py-4 pl-6 pr-20 text-base/6 ring-4 ring-transparent transition placeholder:text-black focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5"
