@@ -1,0 +1,38 @@
+﻿localId,TalkerId,Type,SubType,IsSender,CreateTime,Status,StrContent,StrTime,Remark,NickName,Sender
+19018,131,10000,0,0,1729857656,2,你发起了聊天，身边朋友可通过数字1212加入,2024-10-25 20:00:56,,,
+19019,131,10000,0,0,1729857658,2,"""朱莉 Juliana Baños""加入了群聊",2024-10-25 20:00:58,,,
+19021,131,10000,0,0,1729857667,2,"""Again""加入了群聊",2024-10-25 20:01:07,,,
+19023,131,10000,0,0,1729857674,2,"""正梅""加入了群聊",2024-10-25 20:01:14,,,
+19025,131,49,5,1,1729857682,2,,2024-10-25 20:01:22,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711
+19028,131,10000,0,0,1729857704,2,"""季宇琪 医工交叉vrar方向""通过扫描""朱莉 Juliana Baños""分享的二维码加入群聊",2024-10-25 20:01:44,,,
+19159,131,3,0,0,1729861517,11,"<?xml version=""1.0""?>
+<msg>
+	<img aeskey=""96b0c0ecc266ccb690eb85c3a585bde5"" encryver=""1"" cdnthumbaeskey=""96b0c0ecc266ccb690eb85c3a585bde5"" cdnthumburl=""3052020100044b304902010002042f1363d302033d120002042d070d010204671b978d042430303362333633302d326133662d346638652d613336652d343965663565643831313935020405250a020201000400"" cdnthumblength=""4839"" cdnthumbheight=""120"" cdnthumbwidth=""89"" cdnmidheight=""0"" cdnmidwidth=""0"" cdnhdheight=""0"" cdnhdwidth=""0"" cdnmidimgurl=""3052020100044b304902010002042f1363d302033d120002042d070d010204671b978d042430303362333633302d326133662d346638652d613336652d343965663565643831313935020405250a020201000400"" length=""86526"" md5=""cd7c89b3a2eee16a8efde8cff4708a07"" hevc_mid_size=""86526"" />
+	<platform_signature />
+	<imgdatahash />
+	<ImgSourceInfo>
+		<ImgSourceUrl />
+		<BizType>0</BizType>
+	</ImgSourceInfo>
+</msg>
+",2024-10-25 21:05:17,朱莉_Juliana_Baños,朱莉 Juliana Baños,wxid_dh75efsqcdv922
+19192,131,1,0,0,1729862824,2,你们到了吗,2024-10-25 21:27:04,甘子琛,Again,wxid_27rrto6yytxa22
+19197,131,47,0,0,1729862847,2,"<msg><emoji fromusername = ""wxid_27rrto6yytxa22"" tousername = ""47916499214@chatroom"" type=""2"" idbuffer=""media:0_0"" md5=""2aa35da2f4988647f61b022476296dc8"" len = ""118640"" productid=""com.tencent.xin.emoticon.person.stiker_163349636895d3c21669b785d0"" androidmd5=""2aa35da2f4988647f61b022476296dc8"" androidlen=""118640"" s60v3md5 = ""2aa35da2f4988647f61b022476296dc8"" s60v3len=""118640"" s60v5md5 = ""2aa35da2f4988647f61b022476296dc8"" s60v5len=""118640"" cdnurl = ""http://wxapp.tc.qq.com/262/20304/stodownload?m=2aa35da2f4988647f61b022476296dc8&amp;filekey=30350201010421301f020201060402534804102aa35da2f4988647f61b022476296dc8020301cf70040d00000004627466730000000132&amp;hy=SH&amp;storeid=26308d84a000e56b5000000000000010600004f5053482d364b40b6db39afc&amp;bizid=1023"" designerid = """" thumburl = ""http://mmbiz.qpic.cn/mmemoticon/ajNVdqHZLLAhXBBjIqSl2ZrkliawGw7o0PIhFnO5E6K3UyUDcnZe6ESLHCxVYvaqI/0"" encrypturl = ""http://wxapp.tc.qq.com/262/20304/stodownload?m=1a6b485ac07f90c58dcfdde2ee25d3b8&amp;filekey=30350201010421301f020201060402534804101a6b485ac07f90c58dcfdde2ee25d3b8020301cf80040d00000004627466730000000132&amp;hy=SH&amp;storeid=26308d84b0001b7f7000000000000010600004f5053480ba67b40b6da9cd32&amp;bizid=1023"" aeskey= ""1a694919e9d823baf1a93b795c1beb8f"" externurl = ""http://wxapp.tc.qq.com/262/20304/stodownload?m=2337efb118cc861ffcad12a01b95d7a4&amp;filekey=30340201010420301e020201060402534804102337efb118cc861ffcad12a01b95d7a402027260040d00000004627466730000000132&amp;hy=SH&amp;storeid=26308d84b0003ffdb000000000000010600004f50534800d67b40b6dc92f05&amp;bizid=1023"" externmd5 = ""17ec5f4bb108429d84cf1672e7c7ee25"" width= ""240"" height= ""240"" tpurl= """" tpauthkey= """" attachedtext= """" attachedtextcolor= """" lensid= """" emojiattr= ""CgbkvaDlpb0QsPqfiwY="" linkid= """" desc= ""Cg8KBXpoX2NuEgbkvaDlpb0KCQoFemhfdHcSAAoLCgdkZWZhdWx0EgA="" ></emoji> <gameext type=""0"" content=""0"" ></gameext></msg>",2024-10-25 21:27:27,甘子琛,Again,wxid_27rrto6yytxa22
+19198,131,1,0,1,1729862853,2,到啦,2024-10-25 21:27:33,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711
+19200,131,1,0,1,1729862863,2,在进门后左边,2024-10-25 21:27:43,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711
+19265,131,1,0,0,1729864302,2,https://www.limitless.ai,2024-10-25 21:51:42,正梅,正梅,wxid_zjponcrykag622
+19271,131,1,0,0,1729864540,2,大家可以发一下名字吗? 还要填组队表 ,2024-10-25 21:55:40,朱莉_Juliana_Baños,朱莉 Juliana Baños,wxid_dh75efsqcdv922
+19272,131,1,0,0,1729864571,2,然后我们有队名吗? [嘿哈],2024-10-25 21:56:11,朱莉_Juliana_Baños,朱莉 Juliana Baños,wxid_dh75efsqcdv922
+19297,131,1,0,0,1729865172,2,季宇琪,2024-10-25 22:06:12,季宇琪,季,wxid_ccsywr6lrzcr12
+19299,131,1,0,0,1729865176,2,甘子琛,2024-10-25 22:06:16,甘子琛,Again,wxid_27rrto6yytxa22
+19302,131,49,57,1,1729865220,2,,2024-10-25 22:07:00,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711
+19305,131,49,57,1,1729865254,2,,2024-10-25 22:07:34,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711
+19453,131,1,0,1,1729868354,2,https://www.ycombinator.com/companies?batch=S24&batch=F24,2024-10-25 22:59:14,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711
+19455,131,49,57,1,1729868368,2,,2024-10-25 22:59:28,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711
+19543,131,1,0,0,1729870699,2,[强][强],2024-10-25 23:38:19,季宇琪,季,wxid_ccsywr6lrzcr12
+19621,131,10000,0,0,1729910309,2,"<revokemsg>""甘子琛"" 撤回了一条消息</revokemsg>",2024-10-26 10:38:29,,,
+19741,131,1,0,1,1729918239,2,智谱的API文档：https://open.bigmodel.cn/dev/api/normal-model/glm-4,2024-10-26 12:50:39,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711
+19744,131,1,0,1,1729918474,2,一个提取微信聊天记录的开源项目，我们可以复用这里面的代码：https://github.com/LC044/WeChatMsg,2024-10-26 12:54:34,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711
+19750,131,49,57,1,1729918682,2,,2024-10-26 12:58:02,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711
+19767,131,3,0,1,1729920057,2,"<?xml version=""1.0""?><msg><img aeskey=""c831af08a5ef2fadb1e07e8e6985232d"" encryver=""1"" cdnthumbaeskey=""c831af08a5ef2fadb1e07e8e6985232d"" cdnthumburl=""3052020100044b304902010002049b72459c02033d12000204cc2b1baf0204671c7c3b042461623136663830322d336338322d346266342d626538352d6362356230396636346531620204052418020201000400"" cdnthumblength=""14868"" cdnthumbheight=""109"" cdnthumbwidth=""150"" cdnmidheight=""0"" cdnmidwidth=""0"" cdnhdheight=""0"" cdnhdwidth=""0"" cdnmidimgurl=""3052020100044b304902010002049b72459c02033d12000204cc2b1baf0204671c7c3b042461623136663830322d336338322d346266342d626538352d6362356230396636346531620204052418020201000400"" length=""336520"" md5=""cc001c5b344acd7f34afb161b052514d"" hevc_mid_size=""0"" originsourcemd5=""cc001c5b344acd7f34afb161b052514d""/></msg>",2024-10-26 13:20:57,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711
+19768,131,49,57,1,1729920141,2,,2024-10-26 13:22:21,Zilu🌃,Zilu🌃,wxid_1yxp5vgyvqy711

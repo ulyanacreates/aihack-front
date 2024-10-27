@@ -1,13 +1,55 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet');
+
+
+.text-5xl {
+    font-family: 'Noto Sans', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+    --primary-dark: #3d52a0;
+    --light-blue: #7091e6;
+    --dark-mix-04: rgba(134, 151, 196, 0.4);
+    --dark-mix: #8697c4;
+    --primary-light: #ede8f5; 
+    --secondary-light: #adbbda; 
+    --black: #000000;
+}
+
+@layer base {
+    html {
+        @apply scroll-smooth
+    }
+
+    body {
+        @apply relative bg-gradient-to-t from-[var(--secondary-light)] to-[var(--primary-light)]
+    }
+
+    li {
+        @apply p-4 text-sm
+    }
+
+    button {
+        @apply px-4 py-2
+    }
+
+    h1 {
+        @apply font-sans font-bold text-3xl text-[var(--primary-dark)]
+    }
+
+    h2 {
+        @apply font-serif font-bold text-5xl text-[var(--primary-dark)]
+    }
+
+    .link_text {
+        @apply font-serif font-bold text-2xl text-[var(--primary-dark)]
+    } 
+
+    text {
+        @apply font-serif text-xl text-[var(--black)]
+    }
 }
