@@ -12,6 +12,7 @@
 
 :root {
     --primary-dark: #3d52a0;
+    --primary-dark-04: rgb(61, 82, 160, 0.4);
     --light-blue: #7091e6;
     --dark-mix-04: rgba(134, 151, 196, 0.4);
     --dark-mix: #8697c4;
@@ -51,5 +52,9 @@
 
     text {
         @apply font-serif text-xl text-[var(--black)]
+    }
+
+    wtext {
+        @apply font-serif text-xl text-white
     }
 }
