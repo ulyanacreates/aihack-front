@@ -11,6 +11,7 @@ function RecsList() {
     // const [error, setError] = useState(null); // State for error handling
     const [displayedRecs, setDisplayedRecs] = useState([]); // State to store displayed data
     const [isUserNew, setIsUserNew] = useState(false);
+    const [summary, setSummary] = useState();
     // const recs = [
     //           { id: 1, title: "新的AI效率工具", category: "AI, 效率工具", summary: ["啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"], date: "2023-04-15", priority: "高" },
     //           { id: 2, title: "新的AI效率工具2", category: "AI, 效率工具", summary: ["啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊2"], date: "2023-04-15", priority: "低"},
@@ -49,6 +50,7 @@ function RecsList() {
                 setRecs(result.articles);
                 setIsUserNew(result.isUserNew || false);
                 setDisplayedRecs(result.articles.slice(0, ITEMS_PER_LOAD));
+                setSummary(result.summary);
             } else {
                 console.error('Received result is not in the expected format:', result);
                 fetchData(); // Fallback to fetching data if result is not valid
@@ -90,16 +92,16 @@ function RecsList() {
     <div>
     <div className="flex items-start justify-start h-screen p-6 pl-36">
         <div className='items-start justify-start hscreen'>
-        <h2 className="h2 pt-16 pb-2 pl-4">
+        <h2 className="h2 pt-16 pb-2">
             {isUserNew ? "产品介绍" : "今日总结"} 
         </h2>
-            <text className='text pt-20 pl-4'>
-                {isUserNew ? "不怕拖延症，稍后再看也不忘" : "简单描述今天的总结"}
+            <text className='text pt-20 pr-44 items-start justify-start' style={{fontSize: '16px', textAlign: 'left'}}>
+                {isUserNew ? "不怕拖延症，稍后再看也不忘" : summary}
             </text>
-            <div className='pl-4 max-w-xl'>
+            <div className='max-w-xl'>
                 <InputButton />
             </div>
-            <div className="category-grid pt-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="category-grid grid grid-cols-1 md:grid-cols-3 gap-8" style={{ marginLeft: '-1.2rem' }}>
               
                 {displayedRecs.map((item) => (
                     <ul>

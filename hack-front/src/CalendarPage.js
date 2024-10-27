@@ -7,7 +7,7 @@ function CalendarPage() {
     const calendar = new Calendar('#calendar', {
       defaultView: 'month',
       useCreationPopup: false,
-      useDetailPopup: false,
+      useDetailPopup: true, // Enables the detail popup for events
       calendars: [
         {
           id: '1',
@@ -18,6 +18,20 @@ function CalendarPage() {
           borderColor: '#9e5fff',
         },
       ],
+      template: {
+        // Customize how the time and title appear in the calendar
+        time: (event) => {
+          const { start, end, title } = event;
+          return `<span>${start.getHours()}:${start.getMinutes().toString().padStart(2, '0')} - ${end.getHours()}:${end.getMinutes().toString().padStart(2, '0')} ${title}</span>`;
+        },
+        // Customize the detail popup to display location separately
+        popupDetailBody: (event) => {
+          return `
+            <p>${event.title}</p>
+            <p><strong>Location:</strong> ${event.location}</p>
+          `;
+        },
+      },
     });
 
     const fetchEvents = async () => {
@@ -32,8 +46,7 @@ function CalendarPage() {
         category: 'time', // or 'allday' based on your needs
         start: new Date(activity.date).toISOString(), // Convert to ISO string for start time
         end: new Date(new Date(activity.date).getTime() + 60 * 60 * 1000).toISOString(), // Example: 1 hour duration
-        location: activity.location, // Optional: Store location if needed
-        organizer: activity.organizer, // Optional: Store organizer if needed
+        location: activity.location, // Store location for detail popup
         link: activity.link, // Optional: Store link if needed
       }));
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import './CategoryDetail.css';
 
 const CategoryDetail = () => {
@@ -8,14 +8,25 @@ const CategoryDetail = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [showFavorites, setShowFavorites] = useState(false);
-  const { category } = useParams();
-  const decodedCategory = decodeURIComponent(category);
+  
+  const params = useParams();
+  console.log('Params:', params);
+  const { categoryName } = params;
+  console.log('Category:', categoryName);
+
+  const location = useLocation();
+  console.log('Current path:', location.pathname);
 
   useEffect(() => {
     const fetchArticles = async () => {
       setIsLoading(true);
+      if (!categoryName) {
+        setError('No category specified');
+        setIsLoading(false);
+        return;
+      }
       try {
-        const apiUrl = `http://192.168.10.71:5000/articles/${category}`;
+        const apiUrl = `http://192.168.10.71:5000/articles/${categoryName}`;
         
         // 打印 URL 以进行调试
         console.log('Fetching articles from URL:', apiUrl);
@@ -39,7 +50,7 @@ const CategoryDetail = () => {
     };
 
     fetchArticles();
-  }, [category]);
+  }, [categoryName]);
 
   const formatApiData = (apiData) => {
     if (!apiData || !Array.isArray(apiData.articles)) {
@@ -85,84 +96,51 @@ const CategoryDetail = () => {
     Low: '#4da6ff'
   };
 
-  const renderInfoCard = (item) => (
-    <div key={item.id} className="info-row">
-      <div className="priority-indicator" style={{backgroundColor: priorityColors[item.priority]}}></div>
-      <div className="info-content">
-        <div className="info-header">
-          <a href={item.link} className="info-title" target="_blank" rel="noopener noreferrer">
-            {item.title}
-          </a>
-          <div className="info-actions">
-            <button onClick={() => toggleFavorite(item.id)} className={`favorite-btn ${item.isFavorite ? 'active' : ''}`}>
-              {item.isFavorite ? '★' : '☆'}
-            </button>
-            <button onClick={() => deleteItem(item.id)} className="delete-btn">
-              🗑️
-            </button>
-          </div>
-        </div>
-        <div className="info-subtags-date">
-          <div className="info-tags">
-            {item.labels.map((label, index) => (
-              <span key={index} className="subtag">{label}</span>
-            ))}
-          </div>
-          <span className="info-date">{item.date}</span>
-        </div>
-      </div>
-    </div>
-  );
-
   return (
     <div className="category-detail-container">
-      <h1 className="category-detail-title">{decodedCategory}</h1>
-      <div className="category-detail-controls">
-        <input
-          type="text"
-          placeholder="Search articles..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="category-detail-search"
-        />
-        <button
-          onClick={() => setShowFavorites(!showFavorites)}
-          className="category-detail-favorite-toggle"
-        >
-          {showFavorites ? 'Show All' : 'Show Favorites'}
-        </button>
+      <div className="category-header">
+        <h1 className="category-detail-title">{categoryName}</h1>
+        <div className="category-controls">
+          <input
+            type="text"
+            placeholder="Search articles..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="category-detail-search"
+          />
+          <button
+            onClick={() => setShowFavorites(!showFavorites)}
+            className="category-detail-favorite-toggle"
+          >
+            {showFavorites ? 'Show All' : 'Show Favorites'}
+          </button>
+        </div>
       </div>
       <div className="category-detail-list">
         {filteredData.map(item => (
-          <div key={item.id} className="info-row">
-            <div className="priority-indicator" style={{backgroundColor: priorityColors[item.priority]}}></div>
+          <div key={item.id} className="detail-info-card">
             <div className="info-content">
-              <div className="info-header">
-                <a href={item.link} className="info-title" target="_blank" rel="noopener noreferrer">
-                  {item.title}
-                </a>
-                <div className="info-actions">
-                  <button onClick={() => toggleFavorite(item.id)} className={`favorite-btn ${item.isFavorite ? 'active' : ''}`}>
-                    {item.isFavorite ? '★' : '☆'}
-                  </button>
-                  <button onClick={() => deleteItem(item.id)} className="delete-btn">
-                    🗑️
-                  </button>
-                </div>
+              <a href={item.link} className="info-title" target="_blank" rel="noopener noreferrer">
+                {item.title}
+              </a>
+              <div className="info-tags">
+                {item.labels.map((label, index) => (
+                  <span key={index} className="info-tag">{label}</span>
+                ))}
               </div>
-              <div className="info-subtags-date">
-                <div className="info-tags">
-                  {item.labels.map((label, index) => (
-                    <span key={index} className="subtag">{label}</span>
-                  ))}
-                </div>
-                <span className="info-date">{item.date}</span>
-              </div>
+              <span className="info-date">{item.date}</span>
+            </div>
+            <div className="info-actions">
+              <button onClick={() => toggleFavorite(item.id)} className={`favorite-btn ${item.isFavorite ? 'active' : ''}`}>
+                {item.isFavorite ? '★' : '☆'}
+              </button>
+              <button onClick={() => deleteItem(item.id)} className="delete-btn">
+                🗑️
+              </button>
             </div>
           </div>
         ))}
       </div>
-      <Link to="/category" className="back-button">返回分类列</Link>
     </div>
   );
 };
