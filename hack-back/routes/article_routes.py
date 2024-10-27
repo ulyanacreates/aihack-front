@@ -24,10 +24,12 @@ def get_activities():
             'link': activity.link,
         }
         output.append(activity_data)
+    print(output)
     return jsonify({'activities': output})
 
 @article_bp.route('/articles/<string:category>', methods=['GET'])
-def get_articles_by_category(category):
+def get_articles_category(category):
+    # Filter articles by the given category
     articles = Article.query.filter_by(category=category).all()
     output = []
     for article in articles:
@@ -36,8 +38,31 @@ def get_articles_by_category(category):
             'title': article.title,
             'date': article.date.strftime('%Y-%m-%d'),
             'publisher': article.publisher,
+            'text': article.text,
+            'link': article.link,
+            'labels': [article.label1, article.label2, article.label3],
             'category': article.category,
-            'link': article.link
+            'priority': article.priority
+        }
+        output.append(article_data)
+    
+    return jsonify({'articles': output})
+
+@article_bp.route('/articles', methods=['GET'])
+def get_articles():
+    articles = Article.query.all()
+    output = []
+    for article in articles:
+        article_data = {
+            'id': article.id,
+            'title': article.title,
+            'date': article.date.strftime('%Y-%m-%d'),
+            'publisher': article.publisher,
+            'text': article.text,
+            'link': article.link,
+            'labels': [article.label1, article.label2, article.label3],
+            'category': article.category,
+            'priority': article.priority
         }
         print(article_data)
         output.append(article_data)
@@ -60,6 +85,8 @@ def get_random_articles(number):
             'text': article.text,
             'link': article.link,
             'labels': [article.label1, article.label2, article.label3],
+            'category': article.category,
+            'priority': article.priority
         }
         output.append(article_data)
     print(output)
@@ -94,6 +121,8 @@ def get_daily_articles():
             'text': article.text,
             'link': article.link,
             'labels': [article.label1, article.label2, article.label3],
+            'category': article.category,
+            'priority': article.priority
         }
         output.append(article_data)
     return jsonify({'articles': output, 'summary': summary.summary})
@@ -103,7 +132,7 @@ def post_article(url):
     # Fetch article information
     title, publisher = get_article_title(url)
     content = get_article_info(url)
-    title_str, date_str, summary, labels, activity_bool, publisher_str = get_labels(content)
+    title_str, date_str, summary, labels, activity_bool, publisher_str, category, priority = get_labels(content)
     
     date = datetime.strptime(date_str, '%Y-%m-%d')
 
@@ -113,7 +142,7 @@ def post_article(url):
     if publisher is "":
         publisher = publisher_str
 
-    print(title, date, summary, labels, activity_bool, publisher)
+    print(title, date, summary, labels, activity_bool, publisher, category, priority)
     
     # Check if there is an existing article with the same title
     existing_article = Article.query.filter_by(title=title).first()
@@ -130,7 +159,9 @@ def post_article(url):
         label3=labels[2] if labels[1] is not None else None,
         link=url,
         text=summary,
-        activity=True if activity_bool == 1 else False
+        activity=True if activity_bool == 1 else False,
+        category=category,
+        priority=priority,
     )
 
     db.session.add(new_article)

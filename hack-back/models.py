@@ -17,6 +17,8 @@ class Article(db.Model):
     title = db.Column(db.String(100), nullable=False, unique=True)
     date = db.Column(db.DateTime, nullable=False)
     publisher = db.Column(db.String(100), nullable=False)
+    category = db.Column(db.String(100), nullable=False)
+    priority = db.Column(db.String(100), nullable=False)
     label1 = db.Column(db.String(100), nullable=False)
     label2 = db.Column(db.String(100), nullable=False)
     label3 = db.Column(db.String(100), nullable=False)

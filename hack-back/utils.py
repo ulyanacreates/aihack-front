@@ -39,7 +39,7 @@ def get_activity(content):
             "  title: 金融科技, (生成3个label)\n"
             "  location: 1,\n"
             "  date: ……\n"
-            "}  要求如下：1. 生成目标是活动title、date (%Y-%m-%d)、location。千万不要输出别的内容"
+            "}  要求如下：1. 生成目标是活动title、date (%Y-%m-%d)、location。date应该是2024年10月内的date千万不要输出别的内容"
             )
     client = ZhipuAI(api_key=os.getenv("ZHIPU_KEY")) # Fill in your own APIKey
     response = client.chat.completions.create(
@@ -71,7 +71,9 @@ def get_labels(content):
             "  link: https://blog.csdn.net/2301_78217634/article/details/142791446,\n"
             "  activity_bool: 1,\n"
             "  summary: ……\n"
-            "}  要求如下：1. 生成目标是title、date (%Y-%m-%d)、publisher、label、activity_bool、summary（200字左右）2.activity_bool：判断内容中是否包含活动，判断规则是这段描述包括：时间、地点、主办方、主题（不需要都有，时间和主题比较重要）千万不要输出别的内容"
+            "  category: ...\n"
+            "  priority: ...\n"
+            "}  要求如下：1. 生成目标是title、date (%Y-%m-%d)、publisher、label、activity_bool、summary（200字左右）2.activity_bool：判断内容中是否包含活动，判断规则是这段描述包括：时间、地点、主办方、主题（不需要都有，时间和主题比较重要）千万不要输出别的内容 3.category 请从以下5种进行选择【电子信息、就业资讯、科研论文、时政新闻、家人的爱】4. 根据内容判断优先级priority，输出【高、中、低】之一 "
             )
     client = ZhipuAI(api_key=os.getenv("ZHIPU_KEY")) # Fill in your own APIKey
     response = client.chat.completions.create(
@@ -93,9 +95,10 @@ def get_labels(content):
     labels = content_dict['labels']
     activity_bool = content_dict['activity_bool']
     publisher = content_dict['publisher']
+    category = content_dict['category']
+    priority = content_dict['priority']
 
-
-    return title, date, summary, labels, activity_bool, publisher
+    return title, date, summary, labels, activity_bool, publisher, category, priority
 
     
 # Define a function that visits the given urls and returns the title, publisher, and date of the article, as well as keywords
