@@ -202,8 +202,23 @@ def post_article(url):
         )
         db.session.add(summary)
         db.session.commit()
+
+    output = []
+    for article in articles:
+        article_data = {
+            'id': article.id,
+            'title': article.title,
+            'date': article.date.strftime('%Y-%m-%d'),
+            'publisher': article.publisher,
+            'text': article.text,
+            'link': article.link,
+            'labels': [article.label1, article.label2, article.label3],
+            'category': article.category,
+            'priority': article.priority
+        }
+        output.append(article_data)
     
-    return jsonify({'info': "SUCCESS"}), 200
+    return jsonify({'isUserNew': False, 'articles': output, 'summary': summary.summary}), 200
 
 @article_bp.route('/articleshtml/<path:url>', methods=['POST'])
 def post_article_html(url):
